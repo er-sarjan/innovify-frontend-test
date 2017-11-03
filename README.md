@@ -139,6 +139,10 @@ Clone this repo and then `npm install` and `bower install` to download the requi
 
 Then `gulp watch` and start hacking!
 
+`gulp watch` doesn't start server so use http-server module (install from npm globally if not installed) at root folder of project and go `localhost:8080/build/` and review project functionality
+
+Note: If UI does not work properly, remove build folder and re-run `gulp` and check view again
+
 ## License
 
 MIT
