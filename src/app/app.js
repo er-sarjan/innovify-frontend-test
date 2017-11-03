@@ -1,11 +1,16 @@
-
-var app = angular.module('app', []);
+const app = angular.module('app', []);
 
 app.constant('config', {
     apiUrl: '../api/'
 });
 
+app.config(HttpProvider);
 
-app.config((statesProvider) => {
-    statesProvider.setPrefix('You are feeling');
-});
+/* @ngInject */
+function HttpProvider($httpProvider) {
+	$httpProvider.interceptors.push(['$injector',
+		function($injector) {
+			return $injector.get('httpInterceptor').getInterceptor();
+		}
+	]);
+}

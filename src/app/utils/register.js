@@ -1,5 +1,6 @@
 /**
- * A helper class to simplify registering Angular components and provide a consistent syntax for doing so.
+ * A helper class to simplify registering Angular components and provide a
+ * consistent syntax for doing so.
  */
 function register(appName) {
 
@@ -10,7 +11,8 @@ function register(appName) {
         controller: controller,
         service: service,
         provider: provider,
-        factory: factory
+        factory: factory,
+	      constant: constant
     };
 
     function directive(name, constructorFn) {
@@ -66,10 +68,15 @@ function register(appName) {
         return this;
     }
 
+    function constant(name, constantData) {
+	    app.constant(name, constantData);
+	    return this;
+    }
+
     /**
-     * If the constructorFn is an array of type ['dep1', 'dep2', ..., constructor() {}]
-     * we need to pull out the array of dependencies and add it as an $inject property of the
-     * actual constructor function.
+     * If the constructorFn is an array of type ['dep1', 'dep2', ...,
+     * constructor() {}] we need to pull out the array of dependencies and add
+     * it as an $inject property of the actual constructor function.
      * @param input
      * @returns {*}
      * @private
@@ -90,10 +97,12 @@ function register(appName) {
     }
 
     /**
-     * Convert a constructor function into a factory function which returns a new instance of that
-     * constructor, with the correct dependencies automatically injected as arguments.
+     * Convert a constructor function into a factory function which returns a
+     * new instance of that constructor, with the correct dependencies
+     * automatically injected as arguments.
      *
-     * In order to inject the dependencies, they must be attached to the constructor function with the
+     * In order to inject the dependencies, they must be attached to the
+     * constructor function with the
      * `$inject` property annotation.
      *
      * @param constructorFn
