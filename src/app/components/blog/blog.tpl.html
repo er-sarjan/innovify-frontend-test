@@ -1,0 +1,54 @@
+<div class="row">
+	<div class="col-sm-6 col-md-4" ng-repeat="article in vm.blogItems track by article._id">
+		<div class="thumbnail">
+			<img src="" alt="...">
+			<div class="caption">
+				<h3>{{ article.title }}</h3>
+				<p>{{ article.details }}</p>
+				<p>
+					<a href="#" class="btn" role="button">Read</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- TODO: Form validations task -->
+<p>Create blog entry</p>
+<form name="blogForm" ng-submit="vm.saveBlog(blogForm)">
+	<label>Title:
+		<input type="text"
+				name="title"
+				ng-model="vm.blog.title"
+				ng-required="vm.blogValidations.title.required"
+				ng-minlength="vm.blogValidations.title.minlength"
+				ng-maxlength="vm.blogValidations.title.maxlength">
+	</label>
+	<div role="alert">
+    <span class="error" ng-show="blogForm.title.$touched && blogForm.title.$error.required">
+      Required!</span>
+		<span class="error" ng-show="blogForm.title.$touched && blogForm.title.$error.minlength">
+      Title is too short!</span>
+		<span class="error" ng-show="blogForm.title.$touched && blogForm.title.$error.maxlength">
+      Title is too long!</span>
+	</div>
+	<label>Details:
+		<input type="text"
+				name="details"
+				ng-model="vm.blog.details"
+				ng-required="vm.blogValidations.details.required"
+				ng-minlength="vm.blogValidations.details.minlength"
+				ng-maxlength="vm.blogValidations.details.maxlength">
+	</label>
+	<div role="alert">
+    <span class="error" ng-show="blogForm.details.$touched && blogForm.details.$error.required">
+      Required!</span>
+		<span class="error" ng-show="blogForm.details.$touched && blogForm.details.$error.minlength">
+      Blog details is too short!</span>
+		<span class="error" ng-show="blogForm.details.$touched && blogForm.details.$error.maxlength">
+      Blog details is too long!</span>
+	</div>
+	<button type="submit" class="btn">Save</button>
+	<!-- TODO: Use ngMessages for error message -->
+	<!-- TODO: Create custom directive for input component -->
+</form>

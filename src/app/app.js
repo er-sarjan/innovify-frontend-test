@@ -1,4 +1,4 @@
-const app = angular.module('app', []);
+const app = angular.module('app', ['ui.router', 'ui.bootstrap']);
 
 app.constant('config', {
     apiUrl: '../api/'

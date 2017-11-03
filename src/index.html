@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="app" ng-controller="AppController as vm">
+<html ng-app="app">
 
 <head lang="en">
     <meta charset="UTF-8">
-    <title>AngularJS & ES6 Demo: A Pleasing Array of Items</title>
+    <title>AngularJS & ES6 Demo</title>
 
     <!-- inject:css -->
     <!-- endinject -->
@@ -11,22 +11,22 @@
 </head>
 <body>
 
-<h1>A Pleasing Array of Items</h1>
+<div class="jumbotron">
+	<div class="container">
+		<ol class="breadcrumb">
+			<!--<a></a>-->
+			<li ui-sref-active="active" ui-sref="home">Home</li>
+			<li ui-sref-active="active" ui-sref="blog">Blog</li>
+			<li ui-sref-active="active" ui-sref="users">Users</li>
+		</ol>
 
-<state-display ng-show="showMe" start="showMe"></state-display>
-
-<item-selector collection="vm.items" ng-hide="showMe"></item-selector>
-
-<button class="show-me" ng-show="vm.selection.length && !showMe" ng-click="showMe = true">Get Pleasure</button>
-
-<item-display collection="vm.selection" ng-show="showMe" start="showMe"></item-display>
-
-<button class="thing-button" ng-click="vm.makeThing()">Click here for things</button>
-
-
-<div class="footer">
-   <a href="https://github.com/michaelbromley/angular-es6"> What is this all about?</a>
+		<div class="clear"></div>
+		<div ui-view>
+		</div>
+	</div>
 </div>
+
+
 
 <!-- inject:js -->
 <!-- endinject -->

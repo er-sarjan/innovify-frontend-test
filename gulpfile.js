@@ -36,13 +36,19 @@ gulp.task('index', ['scripts', 'styles', 'templates'], function() {
     var target = gulp.src('./src/index.html');
 
     var js = gulp.src([
+        '../bower_components/jquery/dist/jquery.js',
         '../bower_components/angular/angular.js',
+        '../bower_components/angular-ui-router/release/angular-ui-router.js',
+        '../bower_components/bootstrap/dist/js/bootstrap.js',
+        '../bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
         'app/utils/register.js',
         'app/app.js',
         '**/!(app.js)'
         ], {read: false, cwd: './build/'});
 
     var css = gulp.src([
+        '../bower_components/bootstrap/dist/css/bootstrap.css',
+        '../bower_components/bootstrap/dist/css/bootstrap-theme.css',
         'styles/main.css'
         ], {read: false, cwd: './build/'});
 
